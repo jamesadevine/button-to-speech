@@ -65,10 +65,18 @@ let lastRotaryPosition=0
         }
     })
 
+    const googleSpeak = (phrase:string) => {
+        modules.speechSynthesis1.speak(`[:rate 190][:n3]hey Google. ${phrase}`)
+    }
+
     modules.button1.onUp(function () {
         if (phrases.length > 0) {
-            modules.speechSynthesis1.speak(`[:rate 190][:n3]hey Google. ${phrases[contentPointer]}`)
+            googleSpeak(phrases[contentPointer])
         }
+    })
+
+    myModules.button3.onUp(function () {
+        googleSpeak("stop");
     })
 
     let color = 0
