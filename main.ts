@@ -38,7 +38,7 @@ let lastRotaryPosition=0
     }
 
     myModules.button2.onUp(function () {
-        basic.showString(phrases[contentPointer], 75)
+        control.runInBackground(() => basic.showString(phrases[contentPointer], 75))
     })
 
     modules.rotaryEncoder1.onPositionChangedBy(1, function () {
@@ -60,7 +60,8 @@ let lastRotaryPosition=0
         lastRotaryPosition=selectedRotaryPosition
 
         if (phrases.length > 0) {
-            basic.showString(phrases[contentPointer], 75)
+            led.stopAnimation()
+            control.runInBackground(()=> basic.showString(phrases[contentPointer], 75))
         }
     })
 
